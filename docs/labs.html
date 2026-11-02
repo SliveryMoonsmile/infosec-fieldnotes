@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Practical information security fieldnotes: networks, applications, systems, identity, and cloud delivery."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Lab resources · Fieldnotes</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="index.html">Overview <span>↗</span></a>
+          <a  href="library.html">Article index <span>08</span></a>
+          <a aria-current='page' href="labs.html">Lab resources <span>↓</span></a>
+          <a  href="sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="index.html">Fieldnotes</a><span>/</span><span>Lab resources</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="standard-content"><div class="page-intro"><p class="eyebrow">FROM READING TO DOING</p><h1>Keep a better lab notebook.</h1><p>Small, inspectable resources to accompany the series. The templates contain fictional examples and proposed work.</p></div><div class="downloads"><article class="download-card"><span class="row-number">01</span><div><p class="eyebrow">Python · local example</p><h2>A query that stays a query</h2><p>An in-memory SQLite example with assertions for a quoted title and an injection-shaped value.</p><a class="text-link" href="labs/sqlite_binding.py" download>Download sqlite_binding.py ↓</a></div></article><article class="download-card"><span class="row-number">02</span><div><p class="eyebrow">CSV · fictional policy</p><h2>An access decision matrix</h2><p>A starting CSV for recording positive and denied authorization decisions.</p><a class="text-link" href="labs/access-matrix.csv" download>Download access-matrix.csv ↓</a></div></article><article class="download-card"><span class="row-number">03</span><div><p class="eyebrow">Markdown · exercise template</p><h2>An incident reasoning record</h2><p>A compact timeline and competing-hypotheses template.</p><a class="text-link" href="labs/incident-record.md" download>Download incident-record.md ↓</a></div></article><article class="download-card"><span class="row-number">04</span><div><p class="eyebrow">Markdown · review template</p><h2>A reproducible finding</h2><p>Scope, observed behavior, inferred impact, correction, and retest evidence.</p><a class="text-link" href="labs/finding-template.md" download>Download finding-template.md ↓</a></div></article></div><div class="prose"><h2>Run the local example</h2><pre><code class="language-bash">python3 sqlite_binding.py</code></pre><p>Expected result: <code>PASS: values stayed data; table intact.</code> Python 3 with its standard sqlite3 module is sufficient. No network service, API key, or external dependency is required.</p></div></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>

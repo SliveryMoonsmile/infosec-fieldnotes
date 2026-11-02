@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Practical information security fieldnotes: networks, applications, systems, identity, and cloud delivery."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Overview · Fieldnotes</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a aria-current='page' href="index.html">Overview <span>↗</span></a>
+          <a  href="library.html">Article index <span>08</span></a>
+          <a  href="labs.html">Lab resources <span>↓</span></a>
+          <a  href="sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="index.html">Fieldnotes</a><span>/</span><span>Overview</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="home-content">
+      <section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> NOTES FROM THE TECHNICAL FRONTIER</p>
+      <h1>Security,<br>from the<br><em>packet up.</em></h1>
+      <p class="hero-description">A field guide to the systems we trust.<br>Networks, applications, identity, and the work<br class="desktop-break"> of understanding what can go wrong.</p>
+      <div class="hero-actions"><a class="button primary" href="articles/threats-and-response.html">Start the series <span>↗</span></a><a class="text-link" href="library.html">Explore all notes →</a></div>
+      <div class="hero-caption"><span class="mono">08 NOTES</span><span class="caption-rule"></span> From a persistent notebook to a practical publication.</div></div>
+      <figure class="hero-figure"><svg viewBox="0 0 480 410" role="img" aria-labelledby="network-title network-desc"><title id="network-title">A connection through layers</title><desc id="network-desc">An illustrative network path through link, network, transport, and application layers.</desc>
+      <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="currentColor" stroke-width=".5" opacity=".18"/></pattern></defs>
+      <rect width="480" height="410" fill="url(#grid)"/><g fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M48 294L240 390L432 294L240 198Z" opacity=".15"/><path d="M48 246L240 342L432 246L240 150Z" opacity=".28"/><path d="M48 198L240 294L432 198L240 102Z" opacity=".42"/><path d="M48 150L240 246L432 150L240 54Z" opacity=".7"/>
+      <path d="M48 150V294M240 246V390M432 150V294M240 54V198" stroke-dasharray="4 7" opacity=".35"/>
+      <path d="M112 182L176 150L240 182L304 150L368 182" stroke="var(--accent)" stroke-width="2"/>
+      </g><g fill="var(--surface)" stroke="var(--accent)" stroke-width="2"><circle cx="112" cy="182" r="7"/><circle cx="176" cy="150" r="7"/><circle cx="240" cy="182" r="9"/><circle cx="304" cy="150" r="7"/><circle cx="368" cy="182" r="7"/></g>
+      <g fill="currentColor" font-size="10" font-family="monospace" letter-spacing="2"><text x="20" y="34">FIG. 01 / LAYERS OF TRUST</text><text x="332" y="355">OBSERVE</text><text x="332" y="372">VERIFY</text><text x="332" y="389">DOCUMENT</text></g><path d="M20 51H83" stroke="var(--accent)"/></svg><figcaption><span>01 / NETWORK → APPLICATION</span><span>A model, not live telemetry</span></figcaption></figure></section>
+      <section class="featured-section"><div class="section-heading"><div><p class="eyebrow">PICK A THREAD</p><h2>Start with a question.</h2></div><a href="library.html" class="text-link">All eight notes ↗</a></div><div class="featured-grid"><a class="article-card featured-card" href="articles/packets-and-protocols.html" data-category="Networking">
+    <div class="card-top"><span class="mono">NOTE 03</span><span class="tag">Networking</span></div>
+    <h3>Follow the packet.</h3><p>Read a connection layer by layer and make observations you can actually defend.</p><div class="card-bottom"><span>2 min read</span><span aria-hidden="true">↗</span></div></a><a class="article-card featured-card" href="articles/web-trust-boundaries.html" data-category="Application security">
+    <div class="card-top"><span class="mono">NOTE 02</span><span class="tag">Application security</span></div>
+    <h3>Three ways the web loses trust.</h3><p>Follow the boundary between data and instructions, then give each vulnerability the defense it needs.</p><div class="card-bottom"><span>3 min read</span><span aria-hidden="true">↗</span></div></a><a class="article-card featured-card" href="articles/cloud-and-delivery.html" data-category="Cloud &amp; delivery">
+    <div class="card-top"><span class="mono">NOTE 07</span><span class="tag">Cloud &amp; delivery</span></div>
+    <h3>Ship less privilege.</h3><p>Connect infrastructure notes to a delivery workflow with small permissions and short-lived identity.</p><div class="card-bottom"><span>2 min read</span><span aria-hidden="true">↗</span></div></a></div></section>
+      <section class="series-section"><div class="section-heading"><div><p class="eyebrow">THE READING PATH</p><h2>One system. Several layers.</h2></div><span class="mono muted">01 — 08</span></div><div class="series-rows"><a class="series-row" href="articles/threats-and-response.html"><span class="row-number">01</span><div><span class="eyebrow">Foundations</span><h3>Threats &amp; response</h3></div><span class="row-description">Turn a list of malware names into a useful model of assets, failure, detection, and recovery.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/web-trust-boundaries.html"><span class="row-number">02</span><div><span class="eyebrow">Application security</span><h3>SQL injection, XSS &amp; CSRF</h3></div><span class="row-description">Follow the boundary between data and instructions, then give each vulnerability the defense it needs.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/packets-and-protocols.html"><span class="row-number">03</span><div><span class="eyebrow">Networking</span><h3>Packets, ARP, DNS &amp; VPNs</h3></div><span class="row-description">Read a connection layer by layer and make observations you can actually defend.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/identity-and-authorization.html"><span class="row-number">04</span><div><span class="eyebrow">Identity</span><h3>Access control &amp; Kerberos</h3></div><span class="row-description">Separate proving who you are from deciding what you can do, then test both.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/linux-lab-notebook.html"><span class="row-number">05</span><div><span class="eyebrow">Systems</span><h3>Linux &amp; tmux</h3></div><span class="row-description">A small, repeatable terminal workflow for recording commands, context, and results.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/vulnerability-analysis.html"><span class="row-number">06</span><div><span class="eyebrow">Application security</span><h3>Code review &amp; memory safety</h3></div><span class="row-description">Trace a result to the vulnerable operation, test the fix, and keep historical bugs in context.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/cloud-and-delivery.html"><span class="row-number">07</span><div><span class="eyebrow">Cloud &amp; delivery</span><h3>Cloud identity &amp; secure delivery</h3></div><span class="row-description">Connect infrastructure notes to a delivery workflow with small permissions and short-lived identity.</span><span class="row-arrow">↗</span></a><a class="series-row" href="articles/research-to-evidence.html"><span class="row-number">08</span><div><span class="eyebrow">Research</span><h3>Research &amp; technical writing</h3></div><span class="row-description">Give every bookmarked claim a source, a date, a test, and a clear statement of uncertainty.</span><span class="row-arrow">↗</span></a></div></section>
+      <section class="method-strip"><div class="method-mark" aria-hidden="true">↳</div><div><p class="eyebrow">A NOTE ON THE NOTES</p><h2>From collected links to tested thinking.</h2><p>Adapted from a technical Notion journal. Rewritten for clarity, checked against primary references, and paired with proposed exercises.</p></div><a class="button secondary" href="sources.html">Read the method ↗</a></section>
+    </div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>
