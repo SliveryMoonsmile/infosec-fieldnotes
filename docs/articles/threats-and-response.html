@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Turn a list of malware names into a useful model of assets, failure, detection, and recovery."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Think in threats. Work in evidence. · Fieldnotes</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css"><script src="../assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="../index.html">Overview <span>↗</span></a>
+          <a  href="../library.html">Article index <span>08</span></a>
+          <a  href="../labs.html">Lab resources <span>↓</span></a>
+          <a  href="../sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link is-active" href="../articles/threats-and-response.html" aria-current="page"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="../articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="../articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="../articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="../articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="../articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="../articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="../articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="../about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="../index.html">Fieldnotes</a><span>/</span><span>Series</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="../library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="article-layout"><article class="article-content"><header class="article-header"><p class="eyebrow">NOTE 01 <span>/</span> Foundations</p><h1>Think in threats. Work in evidence.</h1><div class="article-meta"><span>2 MIN READ</span><span>EDITED 30 OCT 2026</span><button class="print-button">Print note ↗</button></div></header><div class="prose"><p class="lead">A useful security note connects a threat to something valuable, a failure that could expose it, and an observation that could reveal the failure.</p>
+<h2 id="model">Start with the asset</h2>
+<p>The early notebook entries collect ransomware resources and malware histories. The useful next step is to turn each topic into questions: what could be lost, how could that happen, and what evidence would distinguish an incident from ordinary failure?</p>
+<p>Use a fictional document service as a working example. Its assets include documents, access permissions, service availability, and the ability to restore a known state. A stolen account could expose documents without installing malware. A broken deployment could interrupt service without any attacker. Describe the effect before assigning a cause.</p>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Example observation</th><th>Next check</th></tr></thead><tbody><tr><td>Is availability affected?</td><td>Users cannot retrieve documents.</td><td>Compare health checks, errors, and recent changes.</td></tr><tr><td>Has access changed?</td><td>An account has a new privileged role.</td><td>Check the approval and identity audit trail.</td></tr><tr><td>Can the service recover?</td><td>A restore exercise fails.</td><td>Inspect backup coverage and recovery dependencies.</td></tr></tbody></table></div>
+<h2 id="response">Organize the response</h2>
+<p>NIST SP 800-61r3 places incident response within wider cybersecurity risk management. Preparation and improvement connect to detection, response, and recovery; the work starts before an alert arrives. Use that structure to identify owners, escalation paths, necessary records, and recovery expectations. <a href="#reference-1">[1]</a></p>
+<p>For a tabletop exercise, write a timeline with a timezone. Record the observation, its source, the decision, the decision owner, and the reason. Preserve the original record separately from an interpretation. If the evidence changes, update the interpretation.</p>
+<h2 id="exercise">Practice: a service becomes unavailable</h2>
+<ol><li>Invent three competing explanations: a failed deployment, an infrastructure outage, and unauthorized activity.</li><li>For each, name one observation that would support it and one that would weaken it.</li><li>Choose the first read-only check that separates those explanations.</li><li>Write the condition under which the response owner would escalate or authorize containment.</li></ol>
+<p>This is a proposed exercise, not an account of a completed incident. Its output is a one-page reasoning record, not a diagnosis made from an alert title.</p>
+<aside class="note"><strong>Notebook to article</strong><p>Historical malware names and incident bookmarks were retained as research prompts. Old claims about attribution and events happening “in the past year” were not republished as current facts.</p></aside>
+
+      <section class="references" id="references"><h2>Primary references</h2><ol><li id="reference-1"><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf">NIST SP 800-61r3 · Incident response ↗</a></li></ol></section>
+      <details class="notebook-sources"><summary>Notebook sources & editorial context</summary><p>Adapted from technical themes in the following entries. Private Notion sources may require access. Explanations and exercises were added for this series; this is not a verbatim export.</p><ul><li><a href="https://app.notion.com/p/749881a949b04746a76bcaacb592a764">General Infosec Notes 01 ↗</a></li><li><a href="https://app.notion.com/p/5efa048036964eed9f1bd4c5257ae761">General Infosec Notes 08 ↗</a></li><li><a href="https://app.notion.com/p/33436a58ea1b42eabb98cf9f5970c60c">General Infosec Notes 12 ↗</a></li></ul><p><a href="../sources.html">Full source map and coverage limits →</a></p></details>
+      </div><nav class="article-pagination" aria-label="Series pagination"><a href="../library.html"><span>← THE INDEX</span>All fieldnotes</a><a href="web-trust-boundaries.html"><span>NEXT NOTE →</span>SQL injection, XSS &amp; CSRF</a></nav></article><aside class="toc"><p class="nav-label">IN THIS NOTE</p><nav aria-label="On this page"><a href="#model">Start with the asset</a><a href="#response">Organize the response</a><a href="#exercise">Practice: a service becomes unavailable</a><a href="#references">Primary references</a></nav><div class="toc-note"><span class="status-dot"></span> Read. Reproduce. Reconsider.<p>Proposed exercises use owned applications and local sample data.</p><a href="../labs.html">Open the lab resources ↗</a></div></aside></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="../sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>

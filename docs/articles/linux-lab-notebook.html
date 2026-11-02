@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A small, repeatable terminal workflow for recording commands, context, and results."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Make the lab reproducible. · Fieldnotes</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css"><script src="../assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="../index.html">Overview <span>↗</span></a>
+          <a  href="../library.html">Article index <span>08</span></a>
+          <a  href="../labs.html">Lab resources <span>↓</span></a>
+          <a  href="../sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="../articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="../articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="../articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="../articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link is-active" href="../articles/linux-lab-notebook.html" aria-current="page"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="../articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="../articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="../articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="../about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="../index.html">Fieldnotes</a><span>/</span><span>Series</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="../library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="article-layout"><article class="article-content"><header class="article-header"><p class="eyebrow">NOTE 05 <span>/</span> Systems</p><h1>Make the lab reproducible.</h1><div class="article-meta"><span>2 MIN READ</span><span>EDITED 30 OCT 2026</span><button class="print-button">Print note ↗</button></div></header><div class="prose"><p class="lead">A reproducible lab starts with a question and ends with a record someone else can inspect. Terminal organization helps preserve that chain.</p>
+<h2 id="layout">Use a small evidence folder</h2>
+<p>The UNIX/Linux entries mention Git and builds; the tmux entry already contains a practical command reference. Combine those ideas into a working convention: one folder for the experiment, one note for context, and one place for results. Record the system, tool version, exact input, and expected outcome before interpreting output.</p>
+<pre><code class="language-bash">mkdir -p lab-notebook/results
+cd lab-notebook
+date -u +%FT%TZ
+uname -sr
+tmux -V
+ip neigh show &gt; results/neighbors.txt</code></pre>
+<p>The neighbor command is read-only and specific to Linux. Its output describes the local machine’s neighbor table, not an inventory of the whole network. Review addresses and identifiers before sharing it. <a href="#reference-2">[2]</a></p>
+<h2 id="tmux">Keep a session, separate the tasks</h2>
+<p>tmux groups terminal programs into sessions, windows, and panes. Detach to leave the session running and attach later. This can preserve work through a client connection drop; it does not keep a process alive through a server shutdown. <a href="#reference-1">[1]</a></p>
+<pre><code class="language-bash">tmux new -s security-lab
+# Inside tmux: Ctrl-b, then c creates a window.
+# Ctrl-b, then % splits into left and right panes.
+# Ctrl-b, then double quote splits into top and bottom panes.
+# Ctrl-b, then d detaches.
+tmux ls
+tmux attach -t security-lab</code></pre>
+<p>In the default key bindings, press the prefix <kbd>Ctrl</kbd> + <kbd>b</kbd>, release it, then press the command key. Keep a notes window and a command window so the result and its explanation do not get mixed together.</p>
+<h2 id="record">Write down what would change your mind</h2>
+<p>A short record can be enough: question, environment, command, observation, interpretation, and limitation. Separate an absent observation from proof of absence. For example, an empty neighbor table says little about devices on another link.</p>
+<h2 id="exercise">Practice: rebuild the result</h2>
+<p>Run the local SQLite lab from the downloads page. Close the terminal, open a fresh one, and run it again using only the recorded instructions. If you must remember an undocumented dependency or setup step, add it to the record. The exercise succeeds when the result is reproducible, not when the terminal looks busy.</p>
+
+      <section class="references" id="references"><h2>Primary references</h2><ol><li id="reference-1"><a href="https://github.com/tmux/tmux/wiki/Getting-Started">tmux · Getting started ↗</a></li><li id="reference-2"><a href="https://man7.org/linux/man-pages/man8/ip-neighbour.8.html">Linux · Neighbor tables ↗</a></li></ol></section>
+      <details class="notebook-sources"><summary>Notebook sources & editorial context</summary><p>Adapted from technical themes in the following entries. Private Notion sources may require access. Explanations and exercises were added for this series; this is not a verbatim export.</p><ul><li><a href="https://app.notion.com/p/974ac1078b284a4ca1f7a1a2ad8ff4cd">General Infosec Notes 13 ↗</a></li><li><a href="https://app.notion.com/p/be12d0a0bace4e21a69fda2900d58d63">General Infosec Notes 14 ↗</a></li><li><a href="https://app.notion.com/p/3672687e74cf42ea89f01bf2bfee7dd3">General Infosec Notes 15 ↗</a></li><li><a href="https://app.notion.com/p/7b9508e5867b49989745c616a6608a7d">General Infosec Notes 18: Notes from UNIX/Linux Guide ↗</a></li></ul><p><a href="../sources.html">Full source map and coverage limits →</a></p></details>
+      </div><nav class="article-pagination" aria-label="Series pagination"><a href="identity-and-authorization.html"><span>← PREVIOUS NOTE</span>Access control &amp; Kerberos</a><a href="vulnerability-analysis.html"><span>NEXT NOTE →</span>Code review &amp; memory safety</a></nav></article><aside class="toc"><p class="nav-label">IN THIS NOTE</p><nav aria-label="On this page"><a href="#layout">Use a small evidence folder</a><a href="#tmux">Keep a session, separate the tasks</a><a href="#record">Write down what would change your mind</a><a href="#exercise">Practice: rebuild the result</a><a href="#references">Primary references</a></nav><div class="toc-note"><span class="status-dot"></span> Read. Reproduce. Reconsider.<p>Proposed exercises use owned applications and local sample data.</p><a href="../labs.html">Open the lab resources ↗</a></div></aside></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="../sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>

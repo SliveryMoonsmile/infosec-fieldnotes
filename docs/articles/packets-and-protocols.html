@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Read a connection layer by layer and make observations you can actually defend."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Follow the packet. · Fieldnotes</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css"><script src="../assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="../index.html">Overview <span>↗</span></a>
+          <a  href="../library.html">Article index <span>08</span></a>
+          <a  href="../labs.html">Lab resources <span>↓</span></a>
+          <a  href="../sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="../articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="../articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link is-active" href="../articles/packets-and-protocols.html" aria-current="page"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="../articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="../articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="../articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="../articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="../articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="../about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="../index.html">Fieldnotes</a><span>/</span><span>Series</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="../library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="article-layout"><article class="article-content"><header class="article-header"><p class="eyebrow">NOTE 03 <span>/</span> Networking</p><h1>Follow the packet.</h1><div class="article-meta"><span>2 MIN READ</span><span>EDITED 30 OCT 2026</span><button class="print-button">Print note ↗</button></div></header><div class="prose"><p class="lead">A packet capture is an observation from one location. Start by identifying the layer and the capture point before deciding what the traffic means.</p>
+<h2 id="layers">Read from the outside inward</h2>
+<p>For an ordinary Ethernet/IP/TCP capture, distinguish link addresses, IP addresses, transport ports, and application data. TCP establishes connection state through its handshake; a SYN is the start of that exchange, not proof that an application request succeeded. A port number is a useful clue, not a guarantee of application identity. <a href="#reference-4">[4]</a></p>
+<div class="packet-stack" role="img" aria-label="An Ethernet frame contains an IP packet, which contains a TCP segment and application bytes."><div>Ethernet frame<div>IP packet<div>TCP segment<div>Application bytes</div></div></div></div></div>
+<h2 id="neighbor">Answer the ARP question locally</h2>
+<p>The notebook asks where ARP information lives. On Linux, <code>ip neigh show</code> displays the kernel’s neighbor entries. For IPv4 these are the ARP table: bindings between protocol addresses and link-layer addresses on a shared link. Record the interface and entry state with the address. <a href="#reference-3">[3]</a></p>
+<pre><code class="language-bash"># Read-only inspection on a Linux lab machine.
+ip neigh show
+
+# Read a capture you are authorized to inspect.
+tcpdump -nn -r lab.pcap -c 20</code></pre>
+<p>The second command does not capture live traffic. It reads at most twenty packets from an existing file; <code>-nn</code> avoids address and port-name resolution. Keep packet captures out of a public repository unless their contents are suitable for release. <a href="#reference-2">[2]</a></p>
+<h2 id="filters">Capture filters and display filters differ</h2>
+<p>Wireshark’s capture filter decides what is collected. Its display filter selects from packets already collected. A display filter cannot recover packets excluded at capture time. Record both filters and the observation point when writing up a result. <a href="#reference-1">[1]</a></p>
+<h2 id="boundaries">DNSSEC and VPNs protect specific boundaries</h2>
+<p>DNSSEC provides origin authentication and integrity for signed DNS data when validation succeeds. It does not encrypt DNS queries or establish that a destination is harmless. <a href="#reference-5">[5]</a></p>
+<p>A VPN is more than changing a source IP. An implementation such as WireGuard authenticates peers and encrypts tunneled traffic; routing determines which traffic enters the tunnel. Protection has endpoints, so identify them before claiming that traffic is protected. <a href="#reference-6">[6]</a></p>
+<aside class="note"><strong>Practice</strong><p>On an approved sample capture, identify one connection’s source, destination, handshake, and application visibility. Write one conclusion supported by the capture and one question the capture cannot answer.</p></aside>
+
+      <section class="references" id="references"><h2>Primary references</h2><ol><li id="reference-1"><a href="https://www.wireshark.org/docs/wsug_html_chunked/">Wireshark · User’s guide ↗</a></li><li id="reference-2"><a href="https://man7.org/linux/man-pages/man8/tcpdump.8.html">tcpdump · Manual ↗</a></li><li id="reference-3"><a href="https://man7.org/linux/man-pages/man8/ip-neighbour.8.html">Linux · Neighbor tables ↗</a></li><li id="reference-4"><a href="https://datatracker.ietf.org/doc/html/rfc9293">IETF RFC 9293 · TCP ↗</a></li><li id="reference-5"><a href="https://datatracker.ietf.org/doc/html/rfc4033">IETF RFC 4033 · DNSSEC ↗</a></li><li id="reference-6"><a href="https://www.wireguard.com/protocol/">WireGuard · Protocol ↗</a></li></ol></section>
+      <details class="notebook-sources"><summary>Notebook sources & editorial context</summary><p>Adapted from technical themes in the following entries. Private Notion sources may require access. Explanations and exercises were added for this series; this is not a verbatim export.</p><ul><li><a href="https://app.notion.com/p/74b6e3cc6c604670b37e601b69e913fd">General Infosec Notes 03 ↗</a></li><li><a href="https://app.notion.com/p/6f77d16018e949f899b36600c38c3c9f">General Infosec Notes 05 ↗</a></li><li><a href="https://app.notion.com/p/3672687e74cf42ea89f01bf2bfee7dd3">General Infosec Notes 15 ↗</a></li></ul><p><a href="../sources.html">Full source map and coverage limits →</a></p></details>
+      </div><nav class="article-pagination" aria-label="Series pagination"><a href="web-trust-boundaries.html"><span>← PREVIOUS NOTE</span>SQL injection, XSS &amp; CSRF</a><a href="identity-and-authorization.html"><span>NEXT NOTE →</span>Access control &amp; Kerberos</a></nav></article><aside class="toc"><p class="nav-label">IN THIS NOTE</p><nav aria-label="On this page"><a href="#layers">Read from the outside inward</a><a href="#neighbor">Answer the ARP question locally</a><a href="#filters">Capture filters and display filters differ</a><a href="#boundaries">DNSSEC and VPNs protect specific boundaries</a><a href="#references">Primary references</a></nav><div class="toc-note"><span class="status-dot"></span> Read. Reproduce. Reconsider.<p>Proposed exercises use owned applications and local sample data.</p><a href="../labs.html">Open the lab resources ↗</a></div></aside></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="../sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>

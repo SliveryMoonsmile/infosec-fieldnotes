@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Give every bookmarked claim a source, a date, a test, and a clear statement of uncertainty."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Turn reading into evidence. · Fieldnotes</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css"><script src="../assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="../index.html">Overview <span>↗</span></a>
+          <a  href="../library.html">Article index <span>08</span></a>
+          <a  href="../labs.html">Lab resources <span>↓</span></a>
+          <a  href="../sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="../articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="../articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="../articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link " href="../articles/identity-and-authorization.html"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="../articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="../articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="../articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link is-active" href="../articles/research-to-evidence.html" aria-current="page"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="../about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="../index.html">Fieldnotes</a><span>/</span><span>Series</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="../library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="article-layout"><article class="article-content"><header class="article-header"><p class="eyebrow">NOTE 08 <span>/</span> Research</p><h1>Turn reading into evidence.</h1><div class="article-meta"><span>2 MIN READ</span><span>EDITED 30 OCT 2026</span><button class="print-button">Print note ↗</button></div></header><div class="prose"><p class="lead">A bookmark preserves a place to look. A research note preserves a claim, its support, and the conditions under which the claim could be wrong.</p>
+<h2 id="question">Give the reading a question</h2>
+<p>The journal moves from Security+ review lists toward terminal practice, vulnerability resources, and cloud study. This article turns that progression into a proposed method: select one question, inspect a primary source, run a bounded experiment, and write a conclusion with a limitation.</p>
+<p>For example, “What does this tool do?” is broad. “Does this query bind the user’s title as a value?” is testable with a small program. Define the intended behavior before judging the result.</p>
+<h2 id="record">Keep the source and the claim together</h2>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>What to record</th></tr></thead><tbody><tr><td>Claim</td><td>A statement small enough to verify.</td></tr><tr><td>Source</td><td>Author, document, link, date, and relevant section.</td></tr><tr><td>Context</td><td>Version, platform, configuration, and assumptions.</td></tr><tr><td>Evidence</td><td>Observed output or a precise supporting passage.</td></tr><tr><td>Uncertainty</td><td>What is inferred, missing, or untested.</td></tr><tr><td>Next check</td><td>The smallest step that could reduce uncertainty.</td></tr></tbody></table></div>
+<h2 id="historical">Keep time in the explanation</h2>
+<p>A report from 2021 remains evidence about a particular event or technique. It is not automatically evidence that a product is vulnerable today. Track the affected version, the fix, and the status of the system being evaluated. A page’s edit date alone does not establish technical currency.</p>
+<p>Similarly, a tool result is not an incident diagnosis. OWASP’s source-analysis guidance describes important limits on automated findings. NIST’s incident-response guidance puts response decisions in a wider process with preparation and improvement. Use those sources to frame questions, not to imply that reading them completes an assessment. <a href="#reference-2">[2]</a> <a href="#reference-1">[1]</a></p>
+<h2 id="publish">Publish a result with useful limits</h2>
+<ol><li>State the question and the observed result in the opening paragraph.</li><li>Include enough environment and input detail to reproduce the observation.</li><li>Link the source beside the claim it supports.</li><li>Distinguish notebook material, editorial explanation, and proposed exercises.</li><li>Review the files for credentials, private identifiers, and material you do not intend to publish.</li></ol>
+<p>The source-map page shows how this series was assembled. Text notes supplied the themes; blank entries and untranslated screenshots did not supply factual claims. Personal remarks and exam scores were left out. The result is a technical publication rather than an unedited journal mirror.</p>
+
+      <section class="references" id="references"><h2>Primary references</h2><ol><li id="reference-1"><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf">NIST SP 800-61r3 · Incident response ↗</a></li><li id="reference-2"><a href="https://owasp.org/www-community/Source_Code_Analysis_Tools">OWASP · Source code analysis tools ↗</a></li></ol></section>
+      <details class="notebook-sources"><summary>Notebook sources & editorial context</summary><p>Adapted from technical themes in the following entries. Private Notion sources may require access. Explanations and exercises were added for this series; this is not a verbatim export.</p><ul><li><a href="https://app.notion.com/p/f56be7f5a0044aa9baf59cf368402ad5">General Infosec Notes 09 ↗</a></li><li><a href="https://app.notion.com/p/63b382b0a7bb400a87d7128b2a9b706a">General Infosec Notes 10 ↗</a></li><li><a href="https://app.notion.com/p/ad610daf99194fa99c166cfe8cb3e84e">General Infosec Notes 11 ↗</a></li><li><a href="https://app.notion.com/p/16c56d4e665f4f65af1d89cd60e9ba67">General Infosec Notes 16 ↗</a></li><li><a href="https://app.notion.com/p/78b0e1c4736140bcaea7e5abb7529ee3">General Infosec Notes 17: Articles to look through... ↗</a></li><li><a href="https://app.notion.com/p/5362eeeed9654f28b0734e4e1708c2d9">General Notes 19: I&#x27;m doing the clapping now ↗</a></li><li><a href="https://app.notion.com/p/c97d8089b4a04d459ecd2bec7fef99e1">General Infosec Notes 20: Returning to the industry ↗</a></li></ul><p><a href="../sources.html">Full source map and coverage limits →</a></p></details>
+      </div><nav class="article-pagination" aria-label="Series pagination"><a href="cloud-and-delivery.html"><span>← PREVIOUS NOTE</span>Cloud identity &amp; secure delivery</a><a href="../labs.html"><span>CONTINUE WITH A LAB →</span>Put the notes to work</a></nav></article><aside class="toc"><p class="nav-label">IN THIS NOTE</p><nav aria-label="On this page"><a href="#question">Give the reading a question</a><a href="#record">Keep the source and the claim together</a><a href="#historical">Keep time in the explanation</a><a href="#publish">Publish a result with useful limits</a><a href="#references">Primary references</a></nav><div class="toc-note"><span class="status-dot"></span> Read. Reproduce. Reconsider.<p>Proposed exercises use owned applications and local sample data.</p><a href="../labs.html">Open the lab resources ↗</a></div></aside></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="../sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>

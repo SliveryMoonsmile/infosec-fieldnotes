@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Separate proving who you are from deciding what you can do, then test both."><meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Identity is the beginning of access. · Fieldnotes</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css"><script src="../assets/site.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Fieldnotes home">
+        <span class="brand-symbol" aria-hidden="true">F<span>↗</span></span>
+        <span>FIELDNOTES<span class="brand-sub">INFORMATION SECURITY</span></span>
+      </a>
+      <div class="sidebar-inner">
+        <p class="nav-label">THE PUBLICATION</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a  href="../index.html">Overview <span>↗</span></a>
+          <a  href="../library.html">Article index <span>08</span></a>
+          <a  href="../labs.html">Lab resources <span>↓</span></a>
+          <a  href="../sources.html">Sources & method <span>↗</span></a>
+        </nav>
+        <p class="nav-label series-heading">READ THE SERIES</p>
+        <nav class="series-nav" aria-label="Article series"><a class="series-link " href="../articles/threats-and-response.html"><span class="series-number">01</span><span>Threats &amp; response</span></a><a class="series-link " href="../articles/web-trust-boundaries.html"><span class="series-number">02</span><span>SQL injection, XSS &amp; CSRF</span></a><a class="series-link " href="../articles/packets-and-protocols.html"><span class="series-number">03</span><span>Packets, ARP, DNS &amp; VPNs</span></a><a class="series-link is-active" href="../articles/identity-and-authorization.html" aria-current="page"><span class="series-number">04</span><span>Access control &amp; Kerberos</span></a><a class="series-link " href="../articles/linux-lab-notebook.html"><span class="series-number">05</span><span>Linux &amp; tmux</span></a><a class="series-link " href="../articles/vulnerability-analysis.html"><span class="series-number">06</span><span>Code review &amp; memory safety</span></a><a class="series-link " href="../articles/cloud-and-delivery.html"><span class="series-number">07</span><span>Cloud identity &amp; secure delivery</span></a><a class="series-link " href="../articles/research-to-evidence.html"><span class="series-number">08</span><span>Research &amp; technical writing</span></a></nav>
+        <div class="sidebar-bottom"><span class="status-dot"></span> A working security notebook
+          <p>Observe carefully.<br>Document what holds up.</p>
+          <a href="../about.html">About this publication ↗</a>
+        </div>
+      </div>
+    </aside>
+<div class="page-shell"><header class="topbar"><button class="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="breadcrumbs"><a href="../index.html">Fieldnotes</a><span>/</span><span>Series</span></div>
+<div class="topbar-actions"><a class="index-shortcut" href="../library.html">Browse the index <span>↗</span></a><button class="theme-toggle" aria-label="Switch to light theme" title="Toggle color theme">◐</button></div></header>
+<main id="main" tabindex="-1"><div class="article-layout"><article class="article-content"><header class="article-header"><p class="eyebrow">NOTE 04 <span>/</span> Identity</p><h1>Identity is the beginning of access.</h1><div class="article-meta"><span>2 MIN READ</span><span>EDITED 30 OCT 2026</span><button class="print-button">Print note ↗</button></div></header><div class="prose"><p class="lead">An authenticated user can still be unauthorized. A successful login tells you about identity; access to a particular record requires another decision.</p>
+<h2 id="decisions">Make permissions explicit</h2>
+<p>Define a principal, an action, a resource, and any relevant context. A role can group permissions, but owning a role does not automatically justify access to every object. OWASP recommends least privilege, denying access by default, and validating permissions on every request. Test the server’s decision rather than relying on whether a button is visible. <a href="#reference-1">[1]</a></p>
+<div class="table-wrap"><table><thead><tr><th>Principal</th><th>Read own note</th><th>Read another user’s note</th><th>Change roles</th></tr></thead><tbody><tr><td>Reader</td><td>Allow</td><td>Deny</td><td>Deny</td></tr><tr><td>Reviewer</td><td>Allow</td><td>Only assigned notes</td><td>Deny</td></tr><tr><td>Identity administrator</td><td>According to content policy</td><td>According to content policy</td><td>With a separate approval policy</td></tr></tbody></table></div>
+<p>This is a fictional policy matrix. An administrator’s ability to manage identity should be considered separately from access to document contents.</p>
+<h2 id="kerberos">Kerberos: tickets establish identity</h2>
+<p>Kerberos V5 uses a trusted Key Distribution Center, tickets, and authenticators. A client can obtain a ticket-granting ticket and use it to request a service ticket. The service ticket and authenticator support authentication to that service. Applications still need authorization policy. Base Kerberos relies principally on symmetric cryptography; public-key pre-authentication is an extension, not a requirement for every session. <a href="#reference-2">[2]</a></p>
+<p>This corrects the original shorthand that described Kerberos session establishment as necessarily public-key based. Keep authentication protocols separate from directory protocols and from policy models when studying identity.</p>
+<h2 id="tests">Test the denied case</h2>
+<ol><li>Use two test users and two records in an application you control.</li><li>Verify that each user can read the record allowed by the policy.</li><li>Change the resource identifier and verify the other record is denied.</li><li>Repeat after a role change and after the session expires.</li><li>Record the expected decision, observed decision, and server-side policy location.</li></ol>
+<p>The downloadable CSV gives a small starting matrix. Fill it in before writing the checks. A useful review explains why access is allowed as clearly as why it is denied.</p>
+
+      <section class="references" id="references"><h2>Primary references</h2><ol><li id="reference-1"><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">OWASP · Authorization ↗</a></li><li id="reference-2"><a href="https://datatracker.ietf.org/doc/html/rfc4120">IETF RFC 4120 · Kerberos V5 ↗</a></li></ol></section>
+      <details class="notebook-sources"><summary>Notebook sources & editorial context</summary><p>Adapted from technical themes in the following entries. Private Notion sources may require access. Explanations and exercises were added for this series; this is not a verbatim export.</p><ul><li><a href="https://app.notion.com/p/ad610daf99194fa99c166cfe8cb3e84e">General Infosec Notes 11 ↗</a></li><li><a href="https://app.notion.com/p/3672687e74cf42ea89f01bf2bfee7dd3">General Infosec Notes 15 ↗</a></li></ul><p><a href="../sources.html">Full source map and coverage limits →</a></p></details>
+      </div><nav class="article-pagination" aria-label="Series pagination"><a href="packets-and-protocols.html"><span>← PREVIOUS NOTE</span>Packets, ARP, DNS &amp; VPNs</a><a href="linux-lab-notebook.html"><span>NEXT NOTE →</span>Linux &amp; tmux</a></nav></article><aside class="toc"><p class="nav-label">IN THIS NOTE</p><nav aria-label="On this page"><a href="#decisions">Make permissions explicit</a><a href="#kerberos">Kerberos: tickets establish identity</a><a href="#tests">Test the denied case</a><a href="#references">Primary references</a></nav><div class="toc-note"><span class="status-dot"></span> Read. Reproduce. Reconsider.<p>Proposed exercises use owned applications and local sample data.</p><a href="../labs.html">Open the lab resources ↗</a></div></aside></div></main>
+<footer class="footer"><span>FIELDNOTES <span class="muted">/ Security, understood in layers.</span></span><span>Edited 30 October 2026 <span class="footer-sep">·</span> <a href="../sources.html">Sources & method ↗</a></span></footer></div>
+<p class="sr-only" id="copy-status" role="status"></p></body></html>
