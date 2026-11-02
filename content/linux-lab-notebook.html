@@ -1,0 +1,24 @@
+<p class="lead">A reproducible lab starts with a question and ends with a record someone else can inspect. Terminal organization helps preserve that chain.</p>
+<h2 id="layout">Use a small evidence folder</h2>
+<p>The UNIX/Linux entries mention Git and builds; the tmux entry already contains a practical command reference. Combine those ideas into a working convention: one folder for the experiment, one note for context, and one place for results. Record the system, tool version, exact input, and expected outcome before interpreting output.</p>
+<pre><code class="language-bash">mkdir -p lab-notebook/results
+cd lab-notebook
+date -u +%FT%TZ
+uname -sr
+tmux -V
+ip neigh show &gt; results/neighbors.txt</code></pre>
+<p>The neighbor command is read-only and specific to Linux. Its output describes the local machine’s neighbor table, not an inventory of the whole network. Review addresses and identifiers before sharing it. <a href="#reference-2">[2]</a></p>
+<h2 id="tmux">Keep a session, separate the tasks</h2>
+<p>tmux groups terminal programs into sessions, windows, and panes. Detach to leave the session running and attach later. This can preserve work through a client connection drop; it does not keep a process alive through a server shutdown. <a href="#reference-1">[1]</a></p>
+<pre><code class="language-bash">tmux new -s security-lab
+# Inside tmux: Ctrl-b, then c creates a window.
+# Ctrl-b, then % splits into left and right panes.
+# Ctrl-b, then double quote splits into top and bottom panes.
+# Ctrl-b, then d detaches.
+tmux ls
+tmux attach -t security-lab</code></pre>
+<p>In the default key bindings, press the prefix <kbd>Ctrl</kbd> + <kbd>b</kbd>, release it, then press the command key. Keep a notes window and a command window so the result and its explanation do not get mixed together.</p>
+<h2 id="record">Write down what would change your mind</h2>
+<p>A short record can be enough: question, environment, command, observation, interpretation, and limitation. Separate an absent observation from proof of absence. For example, an empty neighbor table says little about devices on another link.</p>
+<h2 id="exercise">Practice: rebuild the result</h2>
+<p>Run the local SQLite lab from the downloads page. Close the terminal, open a fresh one, and run it again using only the recorded instructions. If you must remember an undocumented dependency or setup step, add it to the record. The exercise succeeds when the result is reproducible, not when the terminal looks busy.</p>

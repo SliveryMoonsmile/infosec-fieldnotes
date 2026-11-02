@@ -1,0 +1,18 @@
+<p class="lead">A packet capture is an observation from one location. Start by identifying the layer and the capture point before deciding what the traffic means.</p>
+<h2 id="layers">Read from the outside inward</h2>
+<p>For an ordinary Ethernet/IP/TCP capture, distinguish link addresses, IP addresses, transport ports, and application data. TCP establishes connection state through its handshake; a SYN is the start of that exchange, not proof that an application request succeeded. A port number is a useful clue, not a guarantee of application identity. <a href="#reference-4">[4]</a></p>
+<div class="packet-stack" role="img" aria-label="An Ethernet frame contains an IP packet, which contains a TCP segment and application bytes."><div>Ethernet frame<div>IP packet<div>TCP segment<div>Application bytes</div></div></div></div></div>
+<h2 id="neighbor">Answer the ARP question locally</h2>
+<p>The notebook asks where ARP information lives. On Linux, <code>ip neigh show</code> displays the kernel’s neighbor entries. For IPv4 these are the ARP table: bindings between protocol addresses and link-layer addresses on a shared link. Record the interface and entry state with the address. <a href="#reference-3">[3]</a></p>
+<pre><code class="language-bash"># Read-only inspection on a Linux lab machine.
+ip neigh show
+
+# Read a capture you are authorized to inspect.
+tcpdump -nn -r lab.pcap -c 20</code></pre>
+<p>The second command does not capture live traffic. It reads at most twenty packets from an existing file; <code>-nn</code> avoids address and port-name resolution. Keep packet captures out of a public repository unless their contents are suitable for release. <a href="#reference-2">[2]</a></p>
+<h2 id="filters">Capture filters and display filters differ</h2>
+<p>Wireshark’s capture filter decides what is collected. Its display filter selects from packets already collected. A display filter cannot recover packets excluded at capture time. Record both filters and the observation point when writing up a result. <a href="#reference-1">[1]</a></p>
+<h2 id="boundaries">DNSSEC and VPNs protect specific boundaries</h2>
+<p>DNSSEC provides origin authentication and integrity for signed DNS data when validation succeeds. It does not encrypt DNS queries or establish that a destination is harmless. <a href="#reference-5">[5]</a></p>
+<p>A VPN is more than changing a source IP. An implementation such as WireGuard authenticates peers and encrypts tunneled traffic; routing determines which traffic enters the tunnel. Protection has endpoints, so identify them before claiming that traffic is protected. <a href="#reference-6">[6]</a></p>
+<aside class="note"><strong>Practice</strong><p>On an approved sample capture, identify one connection’s source, destination, handshake, and application visibility. Write one conclusion supported by the capture and one question the capture cannot answer.</p></aside>

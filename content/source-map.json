@@ -1,0 +1,261 @@
+{
+  "reviewed": "2026-10-30",
+  "scope": "Infosec view; 23 security-related records inspected. Other coding/game entries were outside this editorial series.",
+  "entries": [
+    {
+      "title": "General Infosec Notes 01",
+      "created": "2020-12-27",
+      "edited": "2020-12-30",
+      "url": "https://app.notion.com/p/749881a949b04746a76bcaacb592a764",
+      "status": "adapted",
+      "articles": [
+        "01"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 02",
+      "created": "2020-12-29",
+      "edited": "2025-10-16",
+      "url": "https://app.notion.com/p/f45eaf4df6324376819c0028a1648459",
+      "status": "adapted",
+      "articles": [
+        "02"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 03",
+      "created": "2020-12-30",
+      "edited": "2021-01-05",
+      "url": "https://app.notion.com/p/74b6e3cc6c604670b37e601b69e913fd",
+      "status": "adapted",
+      "articles": [
+        "03"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 04",
+      "created": "2021-01-05",
+      "edited": "2021-01-07",
+      "url": "https://app.notion.com/p/579b2282ec8d4d1fb6666778e618ddbf",
+      "status": "excluded-empty",
+      "articles": [],
+      "note": "Blank page."
+    },
+    {
+      "title": "General Infosec Notes 05",
+      "created": "2021-01-07",
+      "edited": "2021-01-07",
+      "url": "https://app.notion.com/p/6f77d16018e949f899b36600c38c3c9f",
+      "status": "adapted",
+      "articles": [
+        "03"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 6",
+      "created": "2021-01-09",
+      "edited": "2025-11-20",
+      "url": "https://app.notion.com/p/24e8321ed8844b799571064760c38586",
+      "status": "metadata-only-image-not-transcribed",
+      "articles": [],
+      "note": "Image content not transcribed. Application Hacking used only as a topic reference."
+    },
+    {
+      "title": "General Infosec Notes 07",
+      "created": "2021-01-11",
+      "edited": "2021-01-12",
+      "url": "https://app.notion.com/p/04faa082ba0145f9a1e40d2b62263fdf",
+      "status": "metadata-only-image-not-transcribed",
+      "articles": [],
+      "note": "Image content not transcribed. Application Hacking used only as a topic reference."
+    },
+    {
+      "title": "General Infosec Notes 08",
+      "created": "2021-01-23",
+      "edited": "2021-01-23",
+      "url": "https://app.notion.com/p/5efa048036964eed9f1bd4c5257ae761",
+      "status": "adapted",
+      "articles": [
+        "01"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 09",
+      "created": "2021-01-31",
+      "edited": "2021-02-06",
+      "url": "https://app.notion.com/p/f56be7f5a0044aa9baf59cf368402ad5",
+      "status": "adapted",
+      "articles": [
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 10",
+      "created": "2021-02-06",
+      "edited": "2021-02-07",
+      "url": "https://app.notion.com/p/63b382b0a7bb400a87d7128b2a9b706a",
+      "status": "adapted",
+      "articles": [
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 11",
+      "created": "2021-02-07",
+      "edited": "2021-02-08",
+      "url": "https://app.notion.com/p/ad610daf99194fa99c166cfe8cb3e84e",
+      "status": "adapted",
+      "articles": [
+        "04",
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 12",
+      "created": "2021-02-08",
+      "edited": "2021-02-09",
+      "url": "https://app.notion.com/p/33436a58ea1b42eabb98cf9f5970c60c",
+      "status": "adapted",
+      "articles": [
+        "01",
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 13",
+      "created": "2021-02-09",
+      "edited": "2021-02-10",
+      "url": "https://app.notion.com/p/974ac1078b284a4ca1f7a1a2ad8ff4cd",
+      "status": "adapted",
+      "articles": [
+        "05",
+        "06"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 14",
+      "created": "2021-02-11",
+      "edited": "2021-02-28",
+      "url": "https://app.notion.com/p/be12d0a0bace4e21a69fda2900d58d63",
+      "status": "adapted",
+      "articles": [
+        "05"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 15",
+      "created": "2021-02-12",
+      "edited": "2026-05-02",
+      "url": "https://app.notion.com/p/3672687e74cf42ea89f01bf2bfee7dd3",
+      "status": "adapted",
+      "articles": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 16",
+      "created": "2021-02-17",
+      "edited": "2021-02-17",
+      "url": "https://app.notion.com/p/16c56d4e665f4f65af1d89cd60e9ba67",
+      "status": "adapted",
+      "articles": [
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 17: Articles to look through...",
+      "created": "2021-04-25",
+      "edited": "2021-04-25",
+      "url": "https://app.notion.com/p/78b0e1c4736140bcaea7e5abb7529ee3",
+      "status": "adapted",
+      "articles": [
+        "06",
+        "07",
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 18: Notes from UNIX/Linux Guide",
+      "created": "2021-05-01",
+      "edited": "2021-05-01",
+      "url": "https://app.notion.com/p/7b9508e5867b49989745c616a6608a7d",
+      "status": "adapted",
+      "articles": [
+        "05"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Notes 19: I'm doing the clapping now",
+      "created": "2021-05-25",
+      "edited": "2021-06-26",
+      "url": "https://app.notion.com/p/5362eeeed9654f28b0734e4e1708c2d9",
+      "status": "adapted",
+      "articles": [
+        "03",
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Coding Notes: Devops Engineering 1",
+      "created": "2026-01-24",
+      "edited": "2026-01-24",
+      "url": "https://app.notion.com/p/2f271016ab60805fb4e6c45515505710",
+      "status": "adapted",
+      "articles": [
+        "07",
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "General Infosec Notes 20: Returning to the industry",
+      "created": "2023-12-19",
+      "edited": "2023-12-19",
+      "url": "https://app.notion.com/p/c97d8089b4a04d459ecd2bec7fef99e1",
+      "status": "adapted",
+      "articles": [
+        "08"
+      ],
+      "note": "Rewritten technical themes; personal passages, scores, and original screenshots not exported."
+    },
+    {
+      "title": "Infosec Notes 21: Application Hacking",
+      "created": "2025-07-18",
+      "edited": "2025-07-18",
+      "url": "https://app.notion.com/p/23471016ab6080ed9c26ef569d12ba67",
+      "status": "metadata-only-image-not-transcribed",
+      "articles": [
+        "02"
+      ],
+      "note": "Image content not transcribed. Application Hacking used only as a topic reference."
+    },
+    {
+      "title": "CloudOps Notes 01",
+      "created": "2026-10-21",
+      "edited": "2026-10-21",
+      "url": null,
+      "status": "excluded-sensitive",
+      "articles": [],
+      "note": "Excluded entirely: credentials. No values or raw page content exported."
+    }
+  ]
+}
