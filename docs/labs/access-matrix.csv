@@ -1,0 +1,7 @@
+principal,action,resource,expected_decision,observed_decision,evidence
+reader-a,read,note-owned-by-a,allow,,
+reader-a,read,note-owned-by-b,deny,,
+reader-a,change_role,reader-b,deny,,
+reviewer,read,assigned-note,allow,,
+reviewer,read,unassigned-note,deny,,
+expired-session,read,note-owned-by-a,deny,,
